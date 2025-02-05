@@ -62,7 +62,7 @@ resource "aws_autoscaling_group" "wordpress_autoscaling" {
     version = "$Latest"
   }
   target_group_arns   = [aws_lb_target_group.wordpress_tg.arn]
-  vpc_zone_identifier = [aws_subnet.private_subnet1.id, aws_subnet.private_subnet2.id]
+  vpc_zone_identifier = [aws_subnet.public_subnet1.id, aws_subnet.public_subnet2.id]
 }
 
 resource "aws_autoscaling_policy" "wordpress_scaling_policy" {
