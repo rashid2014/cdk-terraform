@@ -35,7 +35,7 @@ output "rds_subnetgroup_id" {
 }
 
 output "rds_db_endpoint" {
-  value = aws_db_instance.app_db.endpoint
+  value = aws_db_instance.app_db.address
 }
 
 output "alb_dns_name" {
