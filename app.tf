@@ -43,12 +43,12 @@ resource "aws_launch_template" "instance_template" {
   image_id               = var.ec2_ami
   instance_type          = var.ec2_instance_type
   vpc_security_group_ids = [aws_security_group.ec2_sg.id]
-  user_data = templatefile("${path.module}/userdata.sh.tpl", {
+  user_data = base64encode(templatefile("${path.module}/userdata.sh.tpl", {
     db_endpoint = aws_db_instance.app_db.endpoint,
     username    = "admin"
     password    = "Metro123456"
     dbname      = "metrodb"
-  })
+  }))
 }
 
 resource "aws_autoscaling_group" "wordpress_autoscaling" {
