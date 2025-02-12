@@ -33,14 +33,14 @@ phases:
       - |
         if [ "$ACTION" == "apply" ]; then
           echo "Running Terraform Plan..."
-          terraform plan -out=tfplan -var="aws_region=$TF_REGION"
+          terraform plan -out=tfplan -var="region=$TF_REGION"
 
           echo "Applying Terraform Changes..."
           terraform apply -auto-approve tfplan
 
         elif [ "$ACTION" == "destroy" ]; then
           echo "Destroying Terraform Resources..."
-          terraform destroy -auto-approve -var="aws_region=$TF_REGION"
+          terraform destroy -auto-approve -var="region=$TF_REGION"
 
         else
           echo "Invalid ACTION parameter. Use 'apply' or 'destroy'."
